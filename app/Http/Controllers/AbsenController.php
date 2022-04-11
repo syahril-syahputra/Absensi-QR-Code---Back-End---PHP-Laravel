@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -31,7 +32,7 @@ class AbsenController extends Controller
             {
                 $newAbsensi = Absensi::create([
                     'employe_id' => $userid,
-                    "time_scan" => date("Y-m-d H:i:s")
+                    "time_scan" => Carbon::now() //ini awalnya new date() dan di set date_time_zone di router cuma ciubah pakai carbon
                 ]);
 
                 $newAbsensi->save();
